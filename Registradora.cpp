@@ -11,7 +11,7 @@ int venta = 0;
 int memoria = 0;
 int memoria_de_venta = 0;
 int cambio_final = 0;
-int len = 0;
+int len = 1;
 
 
 struct PRODUCTOS {
@@ -26,6 +26,9 @@ string User;
 string User_Operations;
 string metodoDpago;
 string pedido[sizeof(len)];
+string terminar;
+string program = "Start";
+
 
 
 
@@ -49,9 +52,23 @@ void Targeta();
 
 int main(){
 
+
+while (program != "Exit") {
+
     Start();
+
+    memoria_de_venta = memoria + memoria_de_venta;
+    memoria = 0;
     
+    cout << "cerrar progama: \n > Type Exit for End the program" << endl;
+    cin >> program;
+
+    
+
+}
+
 return 0;
+
 };
 
 void Start(){
@@ -176,9 +193,35 @@ void menu(){
 void Cierre(){
 
     cout << "Upy's PizzaTime agradece tu colaboracion y preferencia, hasta pronto!!!" << endl;
+    program = "Exit";
 };
 
 void Corte(){
+
+    cout << "Contenido de la Caja:\t " << saldo_inicial + memoria_de_venta << endl;
+    cout << "Desea terminar el turno?" << endl;
+    cin >> terminar;
+
+    if (terminar == "si"){
+
+        cout << "Su venta total el dia de hoy es:\t" << memoria_de_venta << endl;
+        Cierre();
+    }
+    else if (terminar == "Si"){
+
+        cout << "Su venta total el dia de hoy es:\t" << memoria_de_venta << endl;
+        Cierre();
+    }
+    else if (terminar == "SI"){
+
+        cout << "Su venta total el dia de hoy es:\t" << memoria_de_venta << endl;
+        Cierre();
+    }
+    else {
+
+        cout << "Regesando al inicio..." << endl;
+        Start();
+    }
 
 
 };
@@ -213,57 +256,57 @@ void setpedido(){
 
     if (orden == "Clasica") {
 
-       len++;
        pedido[sizeof(len)] = Original.nombre;
+       len + 1;
        venta = Original.Precio;
        memoria = memoria + venta;
     }
     else if (orden == "clasica"){
 
-        len++;
-        pedido[sizeof(len)] = Original.nombre;
+        pedido[len] = Original.nombre;
+        len + 1;
         venta  = Original.Precio;
         memoria = memoria + venta;
     }
     else if (orden == "Hawaiana") {
 
-        len++;
-        pedido[sizeof(len)] = Hawaiana.nombre;
+        pedido[len] = Hawaiana.nombre;
+        len + 1;
         venta = Hawaiana.Precio;
         memoria = memoria + venta;
     }
     else if (orden == "hawaiana") {
 
-        len++;
-        pedido[sizeof(len)] = Hawaiana.nombre;
+        pedido[len] = Hawaiana.nombre;
+        len + 1;
         venta = Hawaiana.Precio;
         memoria = memoria + venta;
     }
     else if(orden == "Margarita") {
 
-        len++;
-        pedido[sizeof(len)] = Margarita.nombre;
+        pedido[len] = Margarita.nombre;
+        len + 1;
         venta = Margarita.Precio;
         memoria = memoria + venta;
     }
     else if ( orden == "margarita") {
 
-        len++;
-        pedido[sizeof(len)] = Margarita.nombre;
+        pedido[len] = Margarita.nombre;
+        len + 1;
         venta = Margarita.Precio;
         memoria = memoria + venta;
     }
     else if (orden == "Queso"){
 
-        len++;
-        pedido[sizeof(len)] = Queso.nombre;
+        pedido[len] = Queso.nombre;
+        len + 1;
         venta = Queso.Precio;
         memoria = memoria + venta;
     }
     else if (orden == "queso"){
 
-        len++; 
-        pedido[sizeof(len)] = Queso.nombre;
+        pedido[len] = Queso.nombre;
+        len + 1;
         venta = Queso.Precio;
         memoria = memoria + venta;
     }
@@ -291,21 +334,18 @@ void ingrediente_extra(){
 
     if (x == "si"){
 
-        len++;
         
         extra_ingrediente();
 
     }
     else if (x == "Si"){
 
-        len++;
         
         extra_ingrediente();
 
     }
     else if (x == "SI"){
 
-        len++;
         
         extra_ingrediente();
 
@@ -390,7 +430,7 @@ void extra_ingrediente(){
 
     otro_ingrediente();
 
-;}
+};
 
 void otro_ingrediente(){
 
@@ -401,19 +441,16 @@ void otro_ingrediente(){
     
     if (w == "Si"){
 
-        len++;
 
         extra_ingrediente();
     }
     else if (w == "si"){
 
-        len++;
 
         extra_ingrediente();
     }
     else if (w == "SI"){
 
-        len++;
 
         extra_ingrediente();
     }
@@ -446,19 +483,16 @@ void seguir_orden(){
 
     if (x == "si"){
 
-        len++;
 
         menu();
     }
     else if (x == "Si"){
 
-        len++;
 
         menu();
     }
     else if (x == "SI"){
 
-        len++;
 
         menu();
     }
@@ -502,7 +536,7 @@ void print_Tiked(){
     string filename("Tiked.txt");
     fstream output_fstream;
 
-    output_fstream.open(filename, std::ios_base::out);
+    output_fstream.open(filename, ios_base::out);
     if (!output_fstream.is_open()) {
         cerr << "A ocurrido un Error, Intentelo nuevamente" << filename << '\n';
 
@@ -511,17 +545,13 @@ void print_Tiked(){
     else {
 
         output_fstream << "*************************************************\n" << endl;
-        output_fstream << "          Gracias por Comprar en UPY's           " << endl;
+        output_fstream << "          Su pedido estara listo pronto            " << endl;
         output_fstream << "\n*************************************************" << endl;
         output_fstream << "\n" << endl;
         output_fstream << "Su compra ha sido realizada con exito!!!" << endl;
         output_fstream << "precio a pagar:\t " << "$" << memoria << endl; 
-        output_fstream << "numero de items pedidos:\t" << len << endl;
-        for (int  i = 0; i <= len; i++){
-
-            output_fstream << pedido[i] << endl;
-        }
-
+        output_fstream << "\nGracias por su compra!!!" << endl;
+        
         cerr << "\n**********************************************\n" << endl;
         cerr << "Su Tiked esta listo, Gracias por su compra!!!\n" << endl;
     }
@@ -733,6 +763,12 @@ void Targeta(){
         cout << "Gracias por comprar en UPY's PizzaTime, Esperamos verlo pronto nuevamente!!!" << endl;
 
         print_Tiked();
+    }
+    else {
+
+        cout << "Metodo de pago no raconocible, intenteo nuevamente" << endl;
+
+        Payment_method();
     }
 };
 

@@ -1,12 +1,11 @@
 *************************************************
 
-          Gracias por Comprar en UPY's           
+          Su pedido estara listo pronto            
 
 *************************************************
 
 
 Su compra ha sido realizada con exito!!!
-precio a pagar:	 $90
-numero de items pedidos:	1
+precio a pagar:	 $115
 
-
+Gracias por su compra!!!
